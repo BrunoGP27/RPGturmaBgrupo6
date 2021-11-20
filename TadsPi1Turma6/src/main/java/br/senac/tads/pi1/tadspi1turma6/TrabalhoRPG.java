@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class TrabalhoRPG {
 
-    
+    //pequeno puzzle para entrar em uma porta
     public static int PuzzlePorta(){
         
         int min = 1;
