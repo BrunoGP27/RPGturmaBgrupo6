@@ -6,7 +6,7 @@
 package br.senac.tads.pi1.tadspi1turma6;
 
 
-import static br.senac.tads.pi1.tadspi1turma6.TrabalhoRPG.PuzzlePorta;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,6 +27,20 @@ import java.util.Scanner;
                 
         return value;
 
+    }
+        public static int puzzleCemiterio(){
+        
+        
+        int x = 4;
+        int y = 10;
+        int z = 13;
+        int w = 0;
+        
+        w = x+y+z;
+         
+        return w;
+        
+        
     }
         
 
@@ -53,16 +67,19 @@ import java.util.Scanner;
     }
     
     static int PlayerAC(int n1){
-        //ope = onde o player esta //opp = oque o player pegou
-        int n2, ope, opp;
-        boolean laterna = false;
+        //PlayerAC = Ações do player
+        //ope = onde o player esta //opi = oque o player investigou
+        //os
+        
+        int n2, ope, opi, os;
+        boolean lanterna = false;
+        
         ope = n1;
         
         System.out.println("---ações---");
         System.out.println("(1)andar");
         System.out.println("(2)investigar");
-        System.out.println("(3)pegar item");
-        System.out.println("(4)inventario");
+        System.out.println("(3)inventario");
         System.out.println("oque voce ira fazer?:");
         n2 = Entrada();
         if(n2 <= 0 || n2 >= 5){
@@ -78,17 +95,11 @@ import java.util.Scanner;
                 ope = POI(n1);
                 break;
                 
-            case 3:
-                opp = POI(n1);
-                if(opp == 1){
-                    System.out.println("voce pegou a lanterna");
-                    laterna = true;
-                    break;
+            case 2:
+                opi = OSPV(n1);
+                if(opi == 1){
+                    MesaMarcada();
                 }
-                
-            case 4:
-                System.out.println("---=(INVENTARIO)=---");
-                System.out.println("");
                 
         }
         
@@ -107,6 +118,26 @@ import java.util.Scanner;
         }
         
         return ops;
+    }
+    static int OSPV(int n1){
+        //OSPV = oque player esta vendo
+        //opp = oque player investigou//mesa = 1
+        
+        int opi = 0;
+        
+        if(n1 == 2){
+            opi = 1;
+        }
+        
+        return opi;
+    }
+    
+    static boolean Lanterna(){
+        System.out.println("voce usa a lanterna");
+        return true;
+    }
+    static void MesaMarcada(){
+            System.out.println("voces ve uma mesa e emcima dela o numero 9 marcado");
     }
         
         
@@ -146,53 +177,82 @@ import java.util.Scanner;
                         + " Ao reparar no capô do meu carro, noto que está saindo fumaça e, apesar dos pesares, isso não me preocupa,  a única coisa que consigo pensar é em como e porque eu fui parar ali.\n"                       
                         + " Em minha volta há apenas pinheiros e em frente ao meu carro há uma construção abandonada.\n "
                         + "Resolvo descer do carro e explorar o local afim de encontrar algo que possa me ajudar a entender o que aconteceu até então.\n"
-                        + " Mas antes, preciso pegar meus cigarros e minha lanterna no porta luvas... e, claro, não posso esquecer do meu isqueiro.\n"
+                        + " Mas antes, preciso pegar meus cigarros e meu canivete no porta luvas... e, claro, não posso esquecer do meu isqueiro.\n"
                         + " Desço do carro e sigo caminhando em direção a construção abandonada.\n");
             int b,c,a,d,e,f;
                            
             b = cenario();
             
-                switch (b) {
+                switch (b) {//puzzle posto abandonado
                     case 1:
-                        System.out.println("Ao me aproximar até o local me deparo com oque parece ser um velho posto abandonado,\n "
+                        System.out.println(" Ao me aproximar até o local me deparo com oque parece ser um velho posto abandonado,\n "
                                 + "sem muitas opçoes resolvo entrar no local, entao percebo que o a uma velha porta em sua lateral, achei aquilo um pouco estranho entao resolvi ir ate la,\n"
-                                + "quando me aproximo percebo que a um velho painel com um codigo bloqueando a porta, talvez eu posso decifrar esse codigo !");
+                                + " quando me aproximo percebo que a um velho painel com um codigo bloqueando a porta, talvez eu posso decifrar esse codigo !");
                         int Pp1,Pp2,Pp3; // puzzle porta 1,2,3
         
                         System.out.println("==========================================================================================================================");
-                        System.out.println("Neste painel estão os numeros de 1 a 9,talvez se eu acertar um desses números a porta irá se abrir !");
+                        System.out.println(" Neste painel estão os numeros de 1 a 9,talvez se eu acertar um desses números a porta irá se abrir !");
                         Pp2 = PuzzlePorta();
         
                         int cont = 2;
         
                     for(int i=0; i<= 2; i++){
-                        System.out.println("\nNúmero:");
+                        System.out.println("\n Número:");
                         Pp1 = input.nextInt();
 
                         if (Pp1 == b){
-                            System.out.println("Resposta correta \nA porta começa a se abrir lentamente.");
+                            System.out.println("Resposta correta \nA porta começa a se abrir lentamente. e então você entra no local");
                             break;
                         }else{
                             System.out.println("Resposta incorreta, Tente novamente...");
                             System.out.println("Voce tem " + cont -- + " chances");
                         }
                         if(cont == -1){
-                            System.out.println("\nParece que terei que achar outra maneira de entrar !\n");
+                            System.out.println("\ninfelizmente não consegui descobrir a senha, Parece que terei que achar outra maneira de entrar !\n");
+                            System.out.println("==========================================================================================================================");
                         }       
                     }                                            
                     a = PlayerAC(c1);
                         break;
                         
-                    case 2:
-                        System.out.println("Cenario 3 Cemiterio");
+                    case 2://puzzle cemiterio
+                        System.out.println(" Ao me aproximar até o local me deparo com oque parece ser um cemiterio abandonado, na hora fiquei em choque,"
+                                + "mais sem muitas opcões resolvi entrar no local.");
+                        System.out.println(" Ao entrar no cemiterio me deparei com uma grande sepultura, quando me aproximei do portão da sepultura, escutei vozes de criaças pedindo socorro, "
+                                + "\nassutado com a situação decidi me aproximar do local para investigar melhor oque estava acontecendo.");
+                        System.out.println("Então percebo que o portao esta trancada, com um cadeado. \nlogo acima do cadeado esta um pequena nota com a seguinte frase, "
+                                + "'O INDIVIDUO QUE ESTA NESTE TÚMULO, DEVERA PAGAR POR TODOS OS PECADOS DOS DEMAIS' ");  
+                        System.out.println("==========================================================================================================================");
+                        System.out.println("Você então decide explorar o cemiterio, e encontra os seguintes túmulos");                               
+                        System.out.println("Túmulo 1, Alfred Morto no dia XIII");
+                        System.out.println("Túmulo 2, Jason Morto no dia IV");
+                        System.out.println("Túmulo 3, Ronald Morto no dia XIII");
+                        System.out.println("==========================================================================================================================");
+                        System.out.println("Para abrir o cadeado voce deve fazer a soma dos numeros.");
+                        //puzzle porta 2 cemiterio
+                        int Pc1,Pc2;
+                        System.out.println("Digite a resposta");
+                        Pc1 = input.nextInt();
+                        Pc2 = puzzleCemiterio();
+
+                        if (Pc1 == Pc2){
+                            System.out.println("Certa resposta, o cadeado se destranca e o portão se abre!");
+                        }else{
+                            System.out.println("A porta não se abre, terei que achar outra forma de entrar");
+                        }
+                        
                         b = PlayerAC(c1);
+                        
+                        
                         break;
                     case 3:
-                        System.out.println("Cenario 4 Floresta");
+                        System.out.println(" Ao me aproximar até o local me deparo com oque parece ser uma casa completamente derubada,"
+                                + " sem muitas opcoes decido entrar em uma floresta ao lado. ");
                         c = PlayerAC(c1);
                         break;
                     default:
-                        System.out.println("Cenario 1 igreja ");
+                        System.out.println(" Ao me aproximar até o local me deparo com oque parece ser uma velha ingreja abandonada, fiquei muito curioso do porque havia uma igreja em um local tão estranho,"
+                                + "sem muitas opcoes decido entrar no local em busca de ajuda. ");
                         d = PlayerAC(c1);
                         break;
                     }
