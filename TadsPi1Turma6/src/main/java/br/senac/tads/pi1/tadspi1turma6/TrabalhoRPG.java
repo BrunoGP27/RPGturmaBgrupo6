@@ -15,47 +15,45 @@ import java.util.Scanner;
 public class TrabalhoRPG {
 
     //pequeno puzzle para entrar em uma porta
-    public static int PuzzlePorta(){
-        
+    public static int PuzzlePorta() {
+
         int min = 1;
         int max = 9;
-        
+
         Random input = new Random();
-        
+
         int value = input.nextInt(max + min) + min;
-        
-        
+
         return value;
 
     }
-    
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        int a,b,c;
-        
+
+        int a, b;
+
         System.out.println("=============================================================");
         System.out.println("aparentemente tem um pequeno painel nessa porta com 9 numeros,\ntalvez se eu acertar um desses números a porta irá se abrir !");
         b = PuzzlePorta();
-        
+
         int cont = 2;
-        
-        for(int i=0; i<= 2; i++){
+
+        for (int i = 0; i <= 2; i++) {
             System.out.println("\nNúmero:");
             a = input.nextInt();
-            
-            if (a == b){
+
+            if (a == b) {
                 System.out.println("Resposta correta \nA porta começa a se abrir lentamente.");
                 break;
-            }else{
+            } else {
                 System.out.println("Resposta incorreta, Tente novamente...");
-                System.out.println("Voce tem " + cont -- + " chances");
+                System.out.println("Voce tem " + cont-- + " chances");
             }
-            if(cont == -1){
+            if (cont == -1) {
                 System.out.println("\nParece que terei que achar outra maneira de entrar");
             }
         }
     }
-    
-}
 
+}
